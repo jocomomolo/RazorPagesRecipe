@@ -10,17 +10,18 @@ using RazorPagesRecipe.Models;
 
 namespace RazorPagesRecipe.Pages.Recipes
 {
-    public class DetailsModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly RazorPagesRecipe.Data.RazorPagesRecipeContext _context;
 
-        public DetailsModel(RazorPagesRecipe.Data.RazorPagesRecipeContext context)
+        public DeleteModel(RazorPagesRecipe.Data.RazorPagesRecipeContext context)
         {
             _context = context;
         }
 
+        [BindProperty]
         public Recipe Recipe { get; set; }
-       
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -28,16 +29,31 @@ namespace RazorPagesRecipe.Pages.Recipes
                 return NotFound();
             }
 
-            Recipe = await _context.Recipe
-                .Include(recipe => recipe.Ingredients)
-                .Include(recipe => recipe.RecipeUtensils)
-                    .ThenInclude(recipeUtensils => recipeUtensils.Utensil)
-                .FirstOrDefaultAsync(m => m.RecipeID == id);
+            Recipe = await _context.Recipe.FirstOrDefaultAsync(m => m.RecipeID == id);
+
             if (Recipe == null)
             {
                 return NotFound();
             }
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostAsync(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Recipe = await _context.Recipe.FindAsync(id);
+
+            if (Recipe != null)
+            {
+                _context.Recipe.Remove(Recipe);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToPage("./Index");
         }
     }
 }

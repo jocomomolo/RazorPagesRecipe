@@ -29,12 +29,12 @@
     </div>
     <hr />
     @{int i = 1;}
-    @foreach (var item in Model.Recipe.RecipeIngredients)
+    @foreach (var item in Model.Recipe.Ingredients)
     {
         <div class="form-group">
-            <label asp-for="@item.Ingredient.Name" class="control-label">Ingredient @i</label>
-            <input asp-for="@item.Ingredient.Name" class="form-control" />
-            <span asp-validation-for="@item.Ingredient.Name" class="text-danger"></span>
+            <label asp-for="@item.Name" class="control-label">Ingredient @i</label>
+            <input asp-for="@item.Name" class="form-control" />
+            <span asp-validation-for="@item.Name" class="text-danger"></span>
         </div>
         i++;
     }

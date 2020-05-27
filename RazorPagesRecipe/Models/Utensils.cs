@@ -9,7 +9,6 @@ namespace RazorPagesRecipe.Models
     {
         public int UtensilID { get; set; }
         public string Name { get; set; }
-
         public IList<RecipeUtensil> RecipeUtensils { get; set; }
     }
 }

@@ -51,12 +51,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model.Recipe.RecipeIngredients)
+                @foreach (var item in Model.Recipe.Ingredients)
                 {
                     <tr>
                         <td>
-                            @Html.DisplayFor(modelItem => item.Ingredient.Quantity)
-                            @Html.DisplayFor(modelItem => item.Ingredient.Name)
+                            @Html.DisplayFor(modelItem => item.Name)
                         </td>
                     </tr>
                 }

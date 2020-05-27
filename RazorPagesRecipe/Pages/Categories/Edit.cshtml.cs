@@ -9,8 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using RazorPagesRecipe.Data;
 using RazorPagesRecipe.Models;
 
-
-namespace RazorPagesRecipe.Pages.Recipes
+namespace RazorPagesRecipe.Pages.Categories
 {
     public class EditModel : PageModel
     {
@@ -22,7 +21,7 @@ namespace RazorPagesRecipe.Pages.Recipes
         }
 
         [BindProperty]
-        public Recipe Recipe { get; set; }
+        public Category Category { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,14 +30,9 @@ namespace RazorPagesRecipe.Pages.Recipes
                 return NotFound();
             }
 
-            Recipe = await _context.Recipe
-                .Include(recipe => recipe.Category)
-                .Include(recipe => recipe.Ingredients)
-                .Include(recipe => recipe.RecipeUtensils)
-                    .ThenInclude(recipeUtensils => recipeUtensils.Utensil)
-            .FirstOrDefaultAsync(m => m.RecipeID == id);
+            Category = await _context.Category.FirstOrDefaultAsync(m => m.CategoryID == id);
 
-            if (Recipe == null)
+            if (Category == null)
             {
                 return NotFound();
             }
@@ -54,8 +48,7 @@ namespace RazorPagesRecipe.Pages.Recipes
                 return Page();
             }
 
-            _context.Attach(Recipe).State = EntityState.Modified;
-
+            _context.Attach(Category).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +56,7 @@ namespace RazorPagesRecipe.Pages.Recipes
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!RecipeExists(Recipe.RecipeID))
+                if (!CategoryExists(Category.CategoryID))
                 {
                     return NotFound();
                 }
@@ -76,9 +69,9 @@ namespace RazorPagesRecipe.Pages.Recipes
             return RedirectToPage("./Index");
         }
 
-        private bool RecipeExists(int id)
+        private bool CategoryExists(int id)
         {
-            return _context.Recipe.Any(e => e.RecipeID == id);
+            return _context.Category.Any(e => e.CategoryID == id);
         }
     }
 }

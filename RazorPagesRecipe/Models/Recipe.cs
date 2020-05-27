@@ -20,7 +20,7 @@ namespace RazorPagesRecipe.Models
         public int? CookingTime { get; set; }
         //One recipe has one category: Snack/Main/Dessert
         public Category Category { get; set; }
-        public IList<RecipeIngredient> RecipeIngredients { get; set; }
+        public ICollection<Ingredient> Ingredients { get; set; }
         public IList<RecipeUtensil> RecipeUtensils { get; set; }
     }
 }

@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 using RazorPagesRecipe.Data;
 using RazorPagesRecipe.Models;
 
-namespace RazorPagesRecipe.Pages.Recipes
+namespace RazorPagesRecipe.Pages.Categories
 {
     public class CreateModel : PageModel
     {
@@ -19,22 +18,14 @@ namespace RazorPagesRecipe.Pages.Recipes
         {
             _context = context;
         }
-        [BindProperty]
-        public int SelectedCategoryID { get; set; }
-        public List<SelectListItem> Categories { get;set; }
 
-        public async Task<IActionResult> OnGetAsync()
+        public IActionResult OnGet()
         {
-            Categories = await _context.Category.Select(a => new SelectListItem {Value = a.CategoryID.ToString(), Text = a.Name }).ToListAsync();
             return Page();
         }
 
         [BindProperty]
-        public Recipe Recipe { get; set; }
-
-        [BindProperty]
-        public Ingredient Ingredient { get; set; }
-
+        public Category Category { get; set; }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
@@ -45,15 +36,7 @@ namespace RazorPagesRecipe.Pages.Recipes
                 return Page();
             }
 
-            
-            //Pass Selected Category on View to Controller before Adding Recipe
-            Recipe.Category = _context.Category.FirstOrDefault(c => c.CategoryID == SelectedCategoryID);
-
-            _context.Recipe.Add(Recipe);
-
-            //Add RecipeIngredient Entity
-            //_context.RecipeIngredient.Add(RecipeIngredient);
-
+            _context.Category.Add(Category);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

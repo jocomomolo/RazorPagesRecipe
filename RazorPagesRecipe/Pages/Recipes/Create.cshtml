@@ -19,14 +19,34 @@
                 <span asp-validation-for="Recipe.Title" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Recipe.Category.Name" class="control-label">Category</label>
+                <select asp-for="SelectedCategoryID" asp-items="@Model.Categories" class="form-control"><option>Select one</option></select>
+                <span asp-validation-for="Recipe.Category.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ingredient.Name" class="control-label"></label>
+                <input asp-for="Ingredient.Name" class="form-control" />
+                <span asp-validation-for="Ingredient.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Recipe.Description" class="control-label"></label>
                 <input asp-for="Recipe.Description" class="form-control" />
                 <span asp-validation-for="Recipe.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Recipe.TotalTime" class="control-label"></label>
+                <input asp-for="Recipe.TotalTime" class="form-control" />
+                <span asp-validation-for="Recipe.TotalTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Recipe.Source" class="control-label"></label>
                 <input asp-for="Recipe.Source" class="form-control" />
                 <span asp-validation-for="Recipe.Source" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.Owner" class="control-label"></label>
+                <input asp-for="Recipe.Owner" class="form-control" />
+                <span asp-validation-for="Recipe.Owner" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
