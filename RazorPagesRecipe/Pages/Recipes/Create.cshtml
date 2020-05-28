@@ -23,15 +23,22 @@
                 <select asp-for="SelectedCategoryID" asp-items="@Model.Categories" class="form-control"><option>Select one</option></select>
                 <span asp-validation-for="Recipe.Category.Name" class="text-danger"></span>
             </div>
+            @*@for (int i = 0; i < 4; i++)
+        {
             <div class="form-group">
-                <label asp-for="Ingredient.Name" class="control-label"></label>
-                <input asp-for="Ingredient.Name" class="form-control" />
-                <span asp-validation-for="Ingredient.Name" class="text-danger"></span>
+                <label asp-for="Ingredients[i].Name" class="control-label">Ingredient @i</label>
+                <input asp-for="Ingredients[i].Name" class="form-control" />
+            </div>
+        }*@
+            <div class="form-group">
+                <label asp-for="Recipe.Ingredients.FirstOrDefault().Name" class="control-label">Ingredients</label>
+                <input asp-for="Recipe.Ingredients.FirstOrDefault().Name" placeholder="Please separate Ingredients with <br />" class="form-control" />
+                <span asp-validation-for="Recipe.Ingredients.FirstOrDefault().Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Recipe.Description" class="control-label"></label>
-                <input asp-for="Recipe.Description" class="form-control" />
-                <span asp-validation-for="Recipe.Description" class="text-danger"></span>
+                <input asp-for="Recipe.Description" placeholder="Please separate paragraphs with <br />"  class="form-control" />
+                <span asp-validation-for="Recipe.Description" class="text-danger" ></span>
             </div>
             <div class="form-group">
                 <label asp-for="Recipe.TotalTime" class="control-label"></label>

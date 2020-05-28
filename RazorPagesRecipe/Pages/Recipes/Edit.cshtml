@@ -11,41 +11,34 @@
 <form method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <input type="hidden" asp-for="Recipe.RecipeID" />
-   
+
     <div class="form-group">
         <label asp-for="Recipe.Title" class="control-label"></label>
         <input asp-for="Recipe.Title" class="form-control" />
         <span asp-validation-for="Recipe.Title" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Recipe.Category.Name" class="control-label"></label>
-        <input asp-for="Recipe.Category.Name" class="form-control" />
-        <span asp-validation-for="Recipe.Category.Name" class="text-danger"></span>
+        <label asp-for="SelectedCategoryID" class="control-label">Category</label>
+        <select asp-for="SelectedCategoryID" asp-items="@Model.Categories" class="form-control"></select>
+        <span asp-validation-for="SelectedCategoryID" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Recipe.Source" class="control-label"></label>
         <input asp-for="Recipe.Source" class="form-control" />
         <span asp-validation-for="Recipe.Source" class="text-danger"></span>
     </div>
-    <hr />
-    @{int i = 1;}
-    @foreach (var item in Model.Recipe.Ingredients)
-    {
-        <div class="form-group">
-            <label asp-for="@item.Name" class="control-label">Ingredient @i</label>
-            <input asp-for="@item.Name" class="form-control" />
-            <span asp-validation-for="@item.Name" class="text-danger"></span>
-        </div>
-        i++;
-    }
-    <hr />
+    <div class="form-group">
+        <label asp-for="Ingredient.Name" class="control-label">Ingredients</label>
+        <pre><textarea class="form-control" input asp-for="Ingredient.Name" rows="5"></textarea></pre>
+        <span asp-validation-for="Ingredient.Name" class="text-danger"></span>
+    </div>
     @{int j = 1;}
-    @foreach (var item in Model.Recipe.RecipeUtensils)
+    @foreach (var item in Model.UtensilsNames)
     {
         <div class="form-group">
-            <label asp-for="@item.Utensil.Name" class="control-label">Utensil @j</label>
-            <input asp-for="@item.Utensil.Name" class="form-control" />
-            <span asp-validation-for="@item.Utensil.Name" class="text-danger"></span>
+            <label asp-for="@item.Text" class="control-label">Utensil @j</label>
+            <input asp-for="@item.Text" class="form-control" />
+            <span asp-validation-for="@item.Text" class="text-danger"></span>
         </div>
         j++;
     }

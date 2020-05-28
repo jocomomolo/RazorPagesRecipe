@@ -45,7 +45,9 @@ namespace RazorPagesRecipe.Pages.Recipes
                 return NotFound();
             }
 
-            Recipe = await _context.Recipe.FindAsync(id);
+            Recipe = await _context.Recipe
+                .Include(r => r.Ingredients)
+                .SingleAsync(r => r.RecipeID == id);
 
             if (Recipe != null)
             {

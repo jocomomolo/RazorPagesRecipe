@@ -20,7 +20,9 @@ namespace RazorPagesRecipe.Pages.Recipes
         }
 
         public Recipe Recipe { get; set; }
-       
+
+        public Ingredient Ingredient { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace RazorPagesRecipe.Pages.Recipes
             {
                 return NotFound();
             }
+            Ingredient = Recipe.Ingredients.FirstOrDefault();
             return Page();
         }
     }

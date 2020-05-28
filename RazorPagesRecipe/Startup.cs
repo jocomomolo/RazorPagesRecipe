@@ -27,6 +27,12 @@ namespace RazorPagesRecipe
         {
             services.AddRazorPages();
 
+            //Set custom default page
+            services.AddMvc().AddRazorPagesOptions(options =>
+            {
+                options.Conventions.AddPageRoute("/Recipes/Index", "");
+            });
+
             services.AddDbContext<RazorPagesRecipeContext>(options =>
                     options.UseNpgsql(Configuration.GetConnectionString("RazorPagesRecipeContext")));
         }

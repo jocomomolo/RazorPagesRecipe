@@ -33,7 +33,7 @@ namespace RazorPagesRecipe.Pages.Recipes
         public Recipe Recipe { get; set; }
 
         [BindProperty]
-        public Ingredient Ingredient { get; set; }
+        public IList<Ingredient> Ingredients { get; set; }
 
 
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -44,15 +44,22 @@ namespace RazorPagesRecipe.Pages.Recipes
             {
                 return Page();
             }
-
+            foreach (var item in Ingredients)
+            {
+                item.Recipe = Recipe;
+            }
             
             //Pass Selected Category on View to Controller before Adding Recipe
             Recipe.Category = _context.Category.FirstOrDefault(c => c.CategoryID == SelectedCategoryID);
 
             _context.Recipe.Add(Recipe);
 
-            //Add RecipeIngredient Entity
-            //_context.RecipeIngredient.Add(RecipeIngredient);
+            foreach (var item in Ingredients)
+                {
+                    _context.Ingredient.Add(item);
+                }
+            //_context.Ingredient.Add(Ingredient);
+
 
             await _context.SaveChangesAsync();
 
