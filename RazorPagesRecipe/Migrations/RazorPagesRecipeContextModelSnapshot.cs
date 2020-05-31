@@ -15,7 +15,7 @@ namespace RazorPagesRecipe.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
                 .HasAnnotation("ProductVersion", "3.1.4")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
@@ -24,7 +24,7 @@ namespace RazorPagesRecipe.Migrations
                     b.Property<int>("CategoryID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -34,32 +34,12 @@ namespace RazorPagesRecipe.Migrations
                     b.ToTable("Category");
                 });
 
-            modelBuilder.Entity("RazorPagesRecipe.Models.Ingredient", b =>
-                {
-                    b.Property<int>("IngredientID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("text");
-
-                    b.Property<int?>("RecipeID")
-                        .HasColumnType("integer");
-
-                    b.HasKey("IngredientID");
-
-                    b.HasIndex("RecipeID");
-
-                    b.ToTable("Ingredient");
-                });
-
             modelBuilder.Entity("RazorPagesRecipe.Models.Recipe", b =>
                 {
                     b.Property<int>("RecipeID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
 
                     b.Property<int?>("CategoryID")
                         .HasColumnType("integer");
@@ -68,6 +48,9 @@ namespace RazorPagesRecipe.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Ingredients")
                         .HasColumnType("text");
 
                     b.Property<string>("Owner")
@@ -112,7 +95,7 @@ namespace RazorPagesRecipe.Migrations
                     b.Property<int>("UtensilID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
 
                     b.Property<string>("Name")
                         .HasColumnType("text");
@@ -120,13 +103,6 @@ namespace RazorPagesRecipe.Migrations
                     b.HasKey("UtensilID");
 
                     b.ToTable("Utensil");
-                });
-
-            modelBuilder.Entity("RazorPagesRecipe.Models.Ingredient", b =>
-                {
-                    b.HasOne("RazorPagesRecipe.Models.Recipe", "Recipe")
-                        .WithMany("Ingredients")
-                        .HasForeignKey("RecipeID");
                 });
 
             modelBuilder.Entity("RazorPagesRecipe.Models.Recipe", b =>

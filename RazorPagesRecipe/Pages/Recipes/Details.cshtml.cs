@@ -21,7 +21,6 @@ namespace RazorPagesRecipe.Pages.Recipes
 
         public Recipe Recipe { get; set; }
 
-        public Ingredient Ingredient { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -31,7 +30,7 @@ namespace RazorPagesRecipe.Pages.Recipes
             }
 
             Recipe = await _context.Recipe
-                .Include(recipe => recipe.Ingredients)
+                //.Include(recipe => recipe.Ingredients)
                 .Include(recipe => recipe.RecipeUtensils)
                     .ThenInclude(recipeUtensils => recipeUtensils.Utensil)
                 .FirstOrDefaultAsync(m => m.RecipeID == id);
@@ -39,7 +38,6 @@ namespace RazorPagesRecipe.Pages.Recipes
             {
                 return NotFound();
             }
-            Ingredient = Recipe.Ingredients.FirstOrDefault();
             return Page();
         }
     }

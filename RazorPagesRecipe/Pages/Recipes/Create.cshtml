@@ -10,7 +10,7 @@
 <h4>Recipe</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-8">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -23,22 +23,16 @@
                 <select asp-for="SelectedCategoryID" asp-items="@Model.Categories" class="form-control"><option>Select one</option></select>
                 <span asp-validation-for="Recipe.Category.Name" class="text-danger"></span>
             </div>
-            @*@for (int i = 0; i < 4; i++)
-        {
             <div class="form-group">
-                <label asp-for="Ingredients[i].Name" class="control-label">Ingredient @i</label>
-                <input asp-for="Ingredients[i].Name" class="form-control" />
-            </div>
-        }*@
-            <div class="form-group">
-                <label asp-for="Recipe.Ingredients.FirstOrDefault().Name" class="control-label">Ingredients</label>
-                <input asp-for="Recipe.Ingredients.FirstOrDefault().Name" placeholder="Please separate Ingredients with <br />" class="form-control" />
-                <span asp-validation-for="Recipe.Ingredients.FirstOrDefault().Name" class="text-danger"></span>
+                @*placeholder="Please separate Ingredients with <br />"*@
+                <label asp-for="Recipe.Ingredients" class="control-label">Ingredients</label>
+                <textarea class="form-control" input asp-for="Recipe.Ingredients" rows="5"></textarea>
+                <span asp-validation-for="Recipe.Ingredients" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Recipe.Description" class="control-label"></label>
-                <input asp-for="Recipe.Description" placeholder="Please separate paragraphs with <br />"  class="form-control" />
-                <span asp-validation-for="Recipe.Description" class="text-danger" ></span>
+                <textarea class="form-control" input asp-for="Recipe.Description" rows="5"></textarea>
+                <span asp-validation-for="Recipe.Description" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Recipe.TotalTime" class="control-label"></label>

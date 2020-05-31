@@ -23,14 +23,9 @@
         <span asp-validation-for="SelectedCategoryID" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Recipe.Source" class="control-label"></label>
-        <input asp-for="Recipe.Source" class="form-control" />
-        <span asp-validation-for="Recipe.Source" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="Ingredient.Name" class="control-label">Ingredients</label>
-        <pre><textarea class="form-control" input asp-for="Ingredient.Name" rows="5"></textarea></pre>
-        <span asp-validation-for="Ingredient.Name" class="text-danger"></span>
+        <label asp-for="Recipe.Ingredients" class="control-label">Ingredients</label>
+        <pre><textarea class="form-control" input asp-for="Recipe.Ingredients" rows="5"></textarea></pre>
+        <span asp-validation-for="Recipe.Ingredients" class="text-danger"></span>
     </div>
     @{int j = 1;}
     @foreach (var item in Model.UtensilsNames)
@@ -47,6 +42,11 @@
         <label asp-for="Recipe.Description" class="control-label"></label>
         <pre><textarea class="form-control" input asp-for="Recipe.Description" rows="5"></textarea></pre>
         <span asp-validation-for="Recipe.Description" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Recipe.Source" class="control-label"></label>
+        <input asp-for="Recipe.Source" class="form-control" />
+        <span asp-validation-for="Recipe.Source" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Recipe.Owner" class="control-label"></label>

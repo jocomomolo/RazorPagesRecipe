@@ -19,6 +19,7 @@ namespace RazorPagesRecipe.Pages.Recipes
         {
             _context = context;
         }
+
         [BindProperty]
         public int SelectedCategoryID { get; set; }
         public List<SelectListItem> Categories { get;set; }
@@ -32,10 +33,6 @@ namespace RazorPagesRecipe.Pages.Recipes
         [BindProperty]
         public Recipe Recipe { get; set; }
 
-        [BindProperty]
-        public IList<Ingredient> Ingredients { get; set; }
-
-
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
@@ -44,22 +41,11 @@ namespace RazorPagesRecipe.Pages.Recipes
             {
                 return Page();
             }
-            foreach (var item in Ingredients)
-            {
-                item.Recipe = Recipe;
-            }
             
             //Pass Selected Category on View to Controller before Adding Recipe
             Recipe.Category = _context.Category.FirstOrDefault(c => c.CategoryID == SelectedCategoryID);
 
             _context.Recipe.Add(Recipe);
-
-            foreach (var item in Ingredients)
-                {
-                    _context.Ingredient.Add(item);
-                }
-            //_context.Ingredient.Add(Ingredient);
-
 
             await _context.SaveChangesAsync();
 

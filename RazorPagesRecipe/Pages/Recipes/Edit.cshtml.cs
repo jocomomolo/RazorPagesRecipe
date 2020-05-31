@@ -30,10 +30,7 @@ namespace RazorPagesRecipe.Pages.Recipes
         [BindProperty]
         public string CategoryName { get; set; }
         public List<SelectListItem> Categories { get; set; }
-
-        [BindProperty]
-        public Ingredient Ingredient { get; set; }
-
+  
         [BindProperty]
         public List<SelectListItem> UtensilsNames { get; set; }
 
@@ -46,7 +43,7 @@ namespace RazorPagesRecipe.Pages.Recipes
 
             Recipe = await _context.Recipe
                 .Include(recipe => recipe.Category)
-                .Include(recipe => recipe.Ingredients)
+                //.Include(recipe => recipe.Ingredients)
                 .Include(recipe => recipe.RecipeUtensils)
                     .ThenInclude(recipeUtensils => recipeUtensils.Utensil)
             .FirstOrDefaultAsync(m => m.RecipeID == id);
@@ -60,7 +57,6 @@ namespace RazorPagesRecipe.Pages.Recipes
             CategoryName = Recipe.Category.Name;
             Categories = await _context.Category/*.Where(c => c.CategoryID != Recipe.Category.CategoryID)*/.Select(a => new SelectListItem { Value = a.CategoryID.ToString(), Text = a.Name }).ToListAsync();
             //Many Ingredients but whatever, lets input all in one entity and separate by line breaks like Description
-            Ingredient = Recipe.Ingredients.FirstOrDefault();
 
             UtensilsNames = Recipe.RecipeUtensils.Select(b => new SelectListItem { Value = b.UtensilID.ToString(), Text = b.Utensil.Name }).ToList();
                 
@@ -78,12 +74,8 @@ namespace RazorPagesRecipe.Pages.Recipes
             
             //Pass Selected Category on View to Controller before Adding Recipe
             Recipe.Category = _context.Category.FirstOrDefault(c => c.CategoryID == SelectedCategoryID);
-            
             _context.Attach(Recipe).State = EntityState.Modified;
             
-            
-            _context.Attach(Ingredient).State = EntityState.Modified;
-
             try
             {
                 await _context.SaveChangesAsync();

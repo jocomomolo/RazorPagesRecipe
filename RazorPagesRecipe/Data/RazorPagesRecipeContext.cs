@@ -19,7 +19,6 @@ namespace RazorPagesRecipe.Data
             modelBuilder.Entity<RecipeUtensil>().HasKey(sc => new { sc.RecipeID, sc.UtensilID });
         } 
         public DbSet<RazorPagesRecipe.Models.Recipe> Recipe { get; set; }
-        public DbSet<RazorPagesRecipe.Models.Ingredient> Ingredient { get; set; }
         public DbSet<RazorPagesRecipe.Models.RecipeUtensil> RecipeUtensil { get; set; }
         public DbSet<RazorPagesRecipe.Models.Category> Category { get; set; }
     }

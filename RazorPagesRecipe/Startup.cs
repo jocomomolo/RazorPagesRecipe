@@ -33,8 +33,10 @@ namespace RazorPagesRecipe
                 options.Conventions.AddPageRoute("/Recipes/Index", "");
             });
 
-            services.AddDbContext<RazorPagesRecipeContext>(options =>
-                    options.UseNpgsql(Configuration.GetConnectionString("RazorPagesRecipeContext")));
+            //services.AddDbContext<RazorPagesRecipeContext>(options =>
+            //        options.UseNpgsql(Configuration.GetConnectionString("RazorPagesRecipeContext")));
+            services.AddDbContext<RazorPagesRecipeContext>(o => o.UseNpgsql(Configuration.GetConnectionString("RazorPagesRecipeContext"),
+                    options => options.SetPostgresVersion(new Version(9, 6))));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

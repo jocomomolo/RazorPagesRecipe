@@ -50,8 +50,7 @@
                 @Html.DisplayFor(modelItem => item.Owner)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.RecipeID">Edit</a> |
-                <a asp-page="./Delete" asp-route-id="@item.RecipeID">Delete</a>
+                <a asp-page="./Edit" asp-route-id="@item.RecipeID">Edit</a> @*|*@
             </td>
         </tr>
 }
