@@ -44,6 +44,11 @@
         <span asp-validation-for="Recipe.Description" class="text-danger"></span>
     </div>
     <div class="form-group">
+        <label asp-for="Recipe.Freezable" class="control-label"></label>
+        <input type="checkbox" asp-for="Recipe.Freezable" class="form-control" />
+        <span asp-validation-for="Recipe.Freezable" class="text-danger"></span>
+    </div>
+    <div class="form-group">
         <label asp-for="Recipe.Source" class="control-label"></label>
         <input asp-for="Recipe.Source" class="form-control" />
         <span asp-validation-for="Recipe.Source" class="text-danger"></span>
@@ -54,19 +59,14 @@
         <span asp-validation-for="Recipe.Owner" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Recipe.CookingTime" class="control-label"></label>
-        <input asp-for="Recipe.CookingTime" class="form-control" />
-        <span asp-validation-for="Recipe.CookingTime" class="text-danger"></span>
-    </div>
-    <div class="form-group">
         <label asp-for="Recipe.PreparationTime" class="control-label"></label>
         <input asp-for="Recipe.PreparationTime" class="form-control" />
         <span asp-validation-for="Recipe.PreparationTime" class="text-danger"></span>
     </div>
     <div class="form-group">
-        <label asp-for="Recipe.TotalTime" class="control-label"></label>
-        <input asp-for="Recipe.TotalTime" class="form-control" />
-        <span asp-validation-for="Recipe.TotalTime" class="text-danger"></span>
+        <label asp-for="Recipe.CookingTime" class="control-label"></label>
+        <input asp-for="Recipe.CookingTime" class="form-control" />
+        <span asp-validation-for="Recipe.CookingTime" class="text-danger"></span>
     </div>
     <div class="form-group">
         <label asp-for="Recipe.Source" class="control-label"></label>

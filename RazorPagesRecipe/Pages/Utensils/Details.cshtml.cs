@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using RazorPagesRecipe.Data;
 using RazorPagesRecipe.Models;
 
-namespace RazorPagesRecipe.Pages.Recipes
+namespace RazorPagesRecipe.Pages.Utensils
 {
     public class DetailsModel : PageModel
     {
@@ -19,8 +19,7 @@ namespace RazorPagesRecipe.Pages.Recipes
             _context = context;
         }
 
-        public Recipe Recipe { get; set; }
-
+        public Utensil Utensil { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,13 +28,9 @@ namespace RazorPagesRecipe.Pages.Recipes
                 return NotFound();
             }
 
-            Recipe = await _context.Recipe
-                //.Include(recipe => recipe.Ingredients)
-                .Include(recipe => recipe.Category)
-                .Include(recipe => recipe.RecipeUtensils)
-                    .ThenInclude(recipeUtensils => recipeUtensils.Utensil)
-                .FirstOrDefaultAsync(m => m.RecipeID == id);
-            if (Recipe == null)
+            Utensil = await _context.Utensil.FirstOrDefaultAsync(m => m.UtensilID == id);
+
+            if (Utensil == null)
             {
                 return NotFound();
             }

@@ -21,5 +21,6 @@ namespace RazorPagesRecipe.Data
         public DbSet<RazorPagesRecipe.Models.Recipe> Recipe { get; set; }
         public DbSet<RazorPagesRecipe.Models.RecipeUtensil> RecipeUtensil { get; set; }
         public DbSet<RazorPagesRecipe.Models.Category> Category { get; set; }
+        public DbSet<RazorPagesRecipe.Models.Utensil> Utensil { get; set; }
     }
 }

@@ -26,6 +26,9 @@
                 @Html.DisplayNameFor(model => model.Recipe[0].Source)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].Freezable)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Recipe[0].Owner)
             </th>
             <th></th>
@@ -45,6 +48,9 @@
             </td>
             <td>
                 <a href=@Html.DisplayFor(modelItem => item.Source)>@Html.DisplayFor(modelItem => item.Source)</a>
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem => item.Freezable, new { disabled = "disabled" })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Owner)

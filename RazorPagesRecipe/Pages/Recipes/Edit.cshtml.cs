@@ -71,7 +71,8 @@ namespace RazorPagesRecipe.Pages.Recipes
             {
                 return Page();
             }
-            
+
+            Recipe.TotalTime = Recipe.PreparationTime + Recipe.CookingTime;
             //Pass Selected Category on View to Controller before Adding Recipe
             Recipe.Category = _context.Category.FirstOrDefault(c => c.CategoryID == SelectedCategoryID);
             _context.Attach(Recipe).State = EntityState.Modified;

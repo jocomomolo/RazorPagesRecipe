@@ -7,6 +7,8 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200531072902_whatever.cs" />
     <Compile Remove="Migrations\20200531072902_whatever.Designer.cs" />
+    <Compile Remove="Migrations\20200604155220_IsFreezableToUnNullable.cs" />
+    <Compile Remove="Migrations\20200604155220_IsFreezableToUnNullable.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
