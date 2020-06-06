@@ -89,12 +89,10 @@
     <dt class="col-md-2">
         @Html.DisplayNameFor(model => model.Recipe.Freezable)
     </dt>
-    <dd class="checkbox">
-        <label class="checkbox-bootstrap checkbox-lg">
-            <input type="checkbox">
-            <span class="checkbox-placeholder"></span>
-            @Html.CheckBoxFor(model => model.Recipe.Freezable, new { disabled = "disabled" })
-        </label>
+    <dd class="col-md-2">
+        <td>
+        @(Model.Recipe.Freezable ? "Yes" : "No")
+        </td>
     </dd>
     <dt class="col-md-2">
         @Html.DisplayNameFor(model => model.Recipe.Source)
@@ -107,10 +105,10 @@
             <dd class="col-md-2">
                 @Html.DisplayFor(model => model.Recipe.Owner)
             </dd>*@
-</dl>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.Recipe.RecipeID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+    </dl>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.Recipe.RecipeID">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
 
 

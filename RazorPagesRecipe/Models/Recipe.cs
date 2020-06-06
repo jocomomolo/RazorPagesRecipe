@@ -27,7 +27,8 @@ namespace RazorPagesRecipe.Models
         public Category Category { get; set; }
         [Required]
         public string Ingredients { get; set; }
-        
+
+        public Boolean Vegetarian { get; set; }
         public IList<RecipeUtensil> RecipeUtensils { get; set; }
     }
 }
