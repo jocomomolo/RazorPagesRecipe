@@ -24,53 +24,65 @@
                 <span asp-validation-for="Recipe.Category.Name" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Recipe.Portions" class="control-label"></label>
+                <input asp-for="Recipe.Portions" class="form-control" />
+                <span asp-validation-for="Recipe.Portions" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 @*placeholder="Please separate Ingredients with <br />"*@
                 <label asp-for="Recipe.Ingredients" class="control-label">Ingredients</label>
                 <textarea class="form-control" input asp-for="Recipe.Ingredients" rows="5"></textarea>
                 <span asp-validation-for="Recipe.Ingredients" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Utensils" class="control-label">Utensils</label>
-                <select multiple="multiple" asp-for="SelectedUtensilsID" asp-items="@Model.Utensils" class="form-control"><option>Select many</option></select>
+                <label asp-for="Utensils" class="control-label">Utensils (To select many hold Ctrl)</label>
+                <select multiple="multiple" asp-for="SelectedUtensilsID" asp-items="@Model.Utensils" class="form-control"></select>
                 <span asp-validation-for="Utensils" class="text-danger"></span>
             </div>
-                <div class="form-group">
-                    <label asp-for="Recipe.Description" class="control-label"></label>
-                    <textarea class="form-control" input asp-for="Recipe.Description" rows="5"></textarea>
-                    <span asp-validation-for="Recipe.Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Recipe.PreparationTime" class="control-label"></label>
-                    <input asp-for="Recipe.PreparationTime" class="form-control" />
-                    <span asp-validation-for="Recipe.PreparationTime" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Recipe.CookingTime" class="control-label"></label>
-                    <input asp-for="Recipe.CookingTime" class="form-control" />
-                    <span asp-validation-for="Recipe.CookingTime" class="text-danger"></span>
-                </div>
-                <div class="custom-control-lg custom-control custom-checkbox">
-                    <input asp-for="Recipe.Freezable" class="custom-control-input" id="checkbox-large" type="checkbox" />
-                    <label class="custom-control-label" for="checkbox-large">
-                        Freezable?
-                    </label>
-                    <span asp-validation-for="Recipe.Freezable" class="text-danger"></span>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label asp-for="Recipe.Source" class="control-label"></label>
-                    <input asp-for="Recipe.Source" class="form-control" />
-                    <span asp-validation-for="Recipe.Source" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Recipe.Owner" class="control-label"></label>
-                    <input asp-for="Recipe.Owner" class="form-control" />
-                    <span asp-validation-for="Recipe.Owner" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-</form>
+            <div class="form-group">
+                <label asp-for="Recipe.Description" class="control-label"></label>
+                <textarea class="form-control" input asp-for="Recipe.Description" rows="5"></textarea>
+                <span asp-validation-for="Recipe.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.PreparationTime" class="control-label"></label>
+                <input asp-for="Recipe.PreparationTime" class="form-control" />
+                <span asp-validation-for="Recipe.PreparationTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.CookingTime" class="control-label"></label>
+                <input asp-for="Recipe.CookingTime" class="form-control" />
+                <span asp-validation-for="Recipe.CookingTime" class="text-danger"></span>
+            </div>
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input asp-for="Recipe.Vegetarian" class="custom-control-input" id="checkbox-large" type="checkbox" />
+                <label class="custom-control-label" for="checkbox-large">
+                    Vegetarian?
+                </label>
+                <span asp-validation-for="Recipe.Vegetarian" class="text-danger"></span>
+            </div>
+            <div class="custom-control-lg custom-control custom-checkbox">
+                <input asp-for="Recipe.Freezable" class="custom-control-input" id="checkbox-large2" type="checkbox" />
+                <label class="custom-control-label" for="checkbox-large2">
+                    Freezable?
+                </label>
+                <span asp-validation-for="Recipe.Freezable" class="text-danger"></span>
+            </div>
+            <br>
+            <div class="form-group">
+                <label asp-for="Recipe.Source" class="control-label"></label>
+                <input asp-for="Recipe.Source" class="form-control" />
+                <span asp-validation-for="Recipe.Source" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Recipe.Owner" class="control-label"></label>
+                <input asp-for="Recipe.Owner" class="form-control" />
+                <span asp-validation-for="Recipe.Owner" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
 </div>
 

@@ -23,7 +23,7 @@ namespace RazorPagesRecipe.Pages.Recipes
 
         public async Task OnGetAsync()
         {
-            Recipe = await _context.Recipe
+            Recipe = await _context.Recipe.OrderBy(r => r.Category)
                 .Include(recipe => recipe.Category)
                 .ToListAsync();
         }

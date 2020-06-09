@@ -11,6 +11,7 @@ namespace RazorPagesRecipe.Models
         public int RecipeID { get; set; }
         [Required]
         public string Title { get; set; }
+        public int Portions { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
@@ -27,7 +28,6 @@ namespace RazorPagesRecipe.Models
         public Category Category { get; set; }
         [Required]
         public string Ingredients { get; set; }
-
         public Boolean Vegetarian { get; set; }
         public IList<RecipeUtensil> RecipeUtensils { get; set; }
     }

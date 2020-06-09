@@ -62,6 +62,9 @@ namespace RazorPagesRecipe.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("Portions")
+                        .HasColumnType("integer");
+
                     b.Property<int?>("PreparationTime")
                         .HasColumnType("integer");
 

@@ -7,26 +7,32 @@
 
     <h2>@Html.DisplayFor(model => model.Recipe.Title)</h2>
     <hr />
-<dl class="row">
-    <dt class="col-md-2">
-        Category
-    </dt>
-    <dd class="col-md-2">
-        @Html.DisplayFor(model => model.Recipe.Category.Name)
-    </dd>
-    <dt class="col-md-2">
-        @Html.DisplayNameFor(model => model.Recipe.PreparationTime)
-    </dt>
-    <dd class="col-md-2">
-        @Html.DisplayFor(model => model.Recipe.PreparationTime)
-    </dd>
-    <dt class="col-md-2">
-        @Html.DisplayNameFor(model => model.Recipe.CookingTime) 
-    </dt>
-    <dd class="col-md-2">
-        @Html.DisplayFor(model => model.Recipe.CookingTime)
-    </dd>
-</dl>
+    <dl class="row">
+        <dt class="col-md-1">
+            Category
+        </dt>
+        <dd class="col-md-2">
+            @Html.DisplayFor(model => model.Recipe.Category.Name)
+        </dd>
+        <dt class="col-md-1">
+            @Html.DisplayNameFor(model => model.Recipe.Portions)
+        </dt>
+        <dd class="col-md-2">
+            @Html.DisplayFor(model => model.Recipe.Portions)
+        </dd>
+        <dt class="col-md-2">
+            @Html.DisplayNameFor(model => model.Recipe.PreparationTime)
+        </dt>
+        <dd class="col-md-1">
+            @Html.DisplayFor(model => model.Recipe.PreparationTime)
+        </dd>
+        <dt class="col-md-2">
+            @Html.DisplayNameFor(model => model.Recipe.CookingTime)
+        </dt>
+        <dd class="col-md-1">
+            @Html.DisplayFor(model => model.Recipe.CookingTime)
+        </dd>
+    </dl>
 <div class="row">
     <div class="col-md-6">
         <table class="table">
@@ -86,12 +92,20 @@
 </table>
 <hr />
 <dl class="row">
-    <dt class="col-md-2">
+    <dt class="col-md-1">
+        @Html.DisplayNameFor(model => model.Recipe.Vegetarian)
+    </dt>
+    <dd class="col-md-1">
+        <td>
+            @(Model.Recipe.Vegetarian ? "Yes" : "No")
+        </td>
+    </dd>
+    <dt class="col-md-1">
         @Html.DisplayNameFor(model => model.Recipe.Freezable)
     </dt>
-    <dd class="col-md-2">
+    <dd class="col-md-1">
         <td>
-        @(Model.Recipe.Freezable ? "Yes" : "No")
+            @(Model.Recipe.Freezable ? "Yes" : "No")
         </td>
     </dd>
     <dt class="col-md-2">
@@ -105,7 +119,7 @@
             <dd class="col-md-2">
                 @Html.DisplayFor(model => model.Recipe.Owner)
             </dd>*@
-    </dl>
+</dl>
     <div>
         <a asp-page="./Edit" asp-route-id="@Model.Recipe.RecipeID">Edit</a> |
         <a asp-page="./Index">Back to List</a>

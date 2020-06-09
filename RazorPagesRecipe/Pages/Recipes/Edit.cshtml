@@ -23,15 +23,20 @@
         <span asp-validation-for="SelectedCategoryID" class="text-danger"></span>
     </div>
     <div class="form-group">
+        <label asp-for="Recipe.Portions" class="control-label"></label>
+        <input asp-for="Recipe.Portions" class="form-control" />
+        <span asp-validation-for="Recipe.Portions" class="text-danger"></span>
+    </div>
+    <div class="form-group">
         <label asp-for="Recipe.Ingredients" class="control-label">Ingredients</label>
         <pre><textarea class="form-control" input asp-for="Recipe.Ingredients" rows="5"></textarea></pre>
         <span asp-validation-for="Recipe.Ingredients" class="text-danger"></span>
     </div>
     <div class="form-group">
-            <label asp-for="Utensils" class="control-label">Utensils</label>
-            <select multiple="multiple" asp-for="SelectedUtensilsID" asp-items="@Model.Utensils" class="form-control"></select>
-            <span asp-validation-for="Utensils" class="text-danger"></span>
-        </div>
+        <label asp-for="Utensils" class="control-label">Utensils</label>
+        <select multiple="multiple" asp-for="SelectedUtensilsID" asp-items="@Model.Utensils" class="form-control"></select>
+        <span asp-validation-for="Utensils" class="text-danger"></span>
+    </div>
     <hr />
     <div class="form-group">
         <label asp-for="Recipe.Description" class="control-label"></label>
@@ -39,18 +44,20 @@
         <span asp-validation-for="Recipe.Description" class="text-danger"></span>
     </div>
     <div class="custom-control-lg custom-control custom-checkbox">
-        <input asp-for="Recipe.Freezable" class="custom-control-input" id="checkbox-large" type="checkbox" />
+        <input asp-for="Recipe.Vegetarian" class="custom-control-input" id="checkbox-large" type="checkbox" />
         <label class="custom-control-label" for="checkbox-large">
+            Vegetarian?
+        </label>
+        <span asp-validation-for="Recipe.Vegetarian" class="text-danger"></span>
+    </div>
+    <div class="custom-control-lg custom-control custom-checkbox">
+        <input asp-for="Recipe.Freezable" class="custom-control-input" id="checkbox-large2" type="checkbox" />
+        <label class="custom-control-label" for="checkbox-large2">
             Freezable?
         </label>
         <span asp-validation-for="Recipe.Freezable" class="text-danger"></span>
     </div>
     <br>
-    <div class="form-group">
-        <label asp-for="Recipe.Source" class="control-label"></label>
-        <input asp-for="Recipe.Source" class="form-control" />
-        <span asp-validation-for="Recipe.Source" class="text-danger"></span>
-    </div>
     <div class="form-group">
         <label asp-for="Recipe.Owner" class="control-label"></label>
         <input asp-for="Recipe.Owner" class="form-control" />

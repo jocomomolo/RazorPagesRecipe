@@ -17,13 +17,16 @@
                 @Html.DisplayNameFor(model => model.Recipe[0].Title)
             </th>
             <th>
-                Total Time
-            </th>
-            <th>
                 Category
             </th>
             <th>
+                Total Time
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Recipe[0].Source)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Recipe[0].Vegetarian)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Recipe[0].Freezable)
@@ -41,13 +44,16 @@
                 <a asp-page="./Details" asp-route-id="@item.RecipeID">@Html.DisplayFor(modelItem => item.Title)</a>
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TotalTime)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Category.Name)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.TotalTime)
+            </td>
+            <td>
                 <a href=@Html.DisplayFor(modelItem => item.Source)>@Html.DisplayFor(modelItem => item.Source)</a>
+            </td>
+            <td>
+                @(item.Vegetarian ? "Yes" : "No")
             </td>
             <td>
                 @(item.Freezable ? "Yes" : "No")
