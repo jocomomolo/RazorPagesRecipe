@@ -14,17 +14,18 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Recipe[0].Title)
+                Category
             </th>
             <th>
-                Category
+                @Html.DisplayNameFor(model => model.Recipe[0].Title)
             </th>
             <th>
                 Total Time
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Recipe[0].Source)
+                @Html.DisplayNameFor(model => model.Recipe[0].Owner)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Recipe[0].Vegetarian)
             </th>
@@ -32,7 +33,7 @@
                 @Html.DisplayNameFor(model => model.Recipe[0].Freezable)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Recipe[0].Owner)
+                @Html.DisplayNameFor(model => model.Recipe[0].Source)
             </th>
             <th></th>
         </tr>
@@ -41,17 +42,18 @@
 @foreach (var item in Model.Recipe) {
         <tr>
             <td>
-                <a asp-page="./Details" asp-route-id="@item.RecipeID">@Html.DisplayFor(modelItem => item.Title)</a>
+                @Html.DisplayFor(modelItem => item.Category.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
+                <a asp-page="./Details" asp-route-id="@item.RecipeID">@Html.DisplayFor(modelItem => item.Title)</a>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TotalTime)
             </td>
             <td>
-                <a href=@Html.DisplayFor(modelItem => item.Source)>@Html.DisplayFor(modelItem => item.Source)</a>
+                @Html.DisplayFor(modelItem => item.Owner)
             </td>
+
             <td>
                 @(item.Vegetarian ? "Yes" : "No")
             </td>
@@ -59,7 +61,7 @@
                 @(item.Freezable ? "Yes" : "No")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Owner)
+                <a href=@Html.DisplayFor(modelItem => item.Source)>@Html.DisplayFor(modelItem => item.Source)</a>
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.RecipeID">Edit</a> |
