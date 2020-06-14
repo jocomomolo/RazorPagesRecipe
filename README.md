@@ -17,4 +17,4 @@ Main features are:
 * Include a list of **Utensils** right at the beginning to make sure you have all of them before starting
 * **Stop scrolling up and down** with dirty hands: Keep all needed information in a single view: Ingredients, Description on a single view. Should be displayed also in small screens because that is what I actually bring to the kitchen.
 
-Documentation can be found at the Wiki
+Documentation can be found at the [Wiki](https://github.com/jocomomolo/RazorPagesRecipe/wiki)
