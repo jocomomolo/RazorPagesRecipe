@@ -2,7 +2,7 @@
 JustRecipes is a recipe site that lets you create and store recipes. In development
 
 # Table of contents
-* [Motivation](#general-info)
+* [Motivation](#motivation)
 * [Main Features](#main-features)
 * [Technologies](#technologies)
 * [Setup](#setup)
@@ -13,7 +13,8 @@ JustRecipes is designed to optimize cooking and grocery shopping. My motivation 
 * I have no idea **what to grocery shop**. I either stick to my very short list of basic foods or I buy groceries that I do not know what to cook with them.
 Note: This is a beginner project and it is intended to use only by me/ my nearest circle. There are already tons of apps that do exactly this + more.
 
-# Main Features (here add pictures when done)
+# Main Features
+(here add pictures when done)
 * Easily **Create/Edit/Delete** Recipes. Quick overview of all Recipes.
 * Have a **personalized Recipe Book** that contains **all** and **only** Recipes that I want.
 * Show recipes in a **standarized** way. Avoid mountains of text before the recipes so typical of foodblogs: "When I was a boy, we spent our summers on the Maine coastline. Those were the best times of my life. The breeze through the sea grass, the waves breaking on the rocky shore, the lighthouses at night. And the fresh iced lemonade my grandmother made. That lemonade for me harkened back to a blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah. Refreshing blah blah blah blah blah blah blah blah Grandma blah blah blah blah blah blah blah blah.
