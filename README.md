@@ -42,12 +42,12 @@ English. DB Recipes Spanish English German
 ## Development
 ### Front End
  *  Bootstrap
- *  Syncfusion
+ *  Syncfusion 18.1
 
 ### Backend
  *  Framework: ASP.NET Core Razor Pages
- * ORM Framework: Entity Core 3.1 Code First
- *  SDK: Visual Studio 2019 Community
+ *  ORM Framework: Entity Core 3.1 Code First
+ *  IDE: Visual Studio 2019 Community
 
 ## Deployment
  *  Web Host: Heroku
