@@ -52,7 +52,8 @@ namespace RazorPagesRecipe
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
+            //Register Syncfusion license
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("MjczMjE0QDMxMzgyZTMxMmUzMFlLQ0dQODduV3Z3dmRVT0VWWUt5MVN0L0hQK0VONDJKV2phZTdudkVFbDQ9");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

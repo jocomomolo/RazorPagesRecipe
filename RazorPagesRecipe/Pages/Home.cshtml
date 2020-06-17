@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Home page";
 }
+    <div>
+        <ejs-calendar id="calendar"></ejs-calendar>
+        <ejs-timepicker id="timepicker" ejs-for="@Model.Date" name="value"></ejs-timepicker>
 
+        <ejs-autocomplete id="games" dataSource="@Model.GamesData" ejs-for="@Model.Game" placeholder="e.g. Basketball"></ejs-autocomplete>
+    </div>
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p><a asp-page="Recipes/Index">Go To Recipes</a></p>

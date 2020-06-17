@@ -20,17 +20,19 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Utensil) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.UtensilID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.UtensilID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.UtensilID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Utensil)
+        {
+            <tr>
+                <td>
+                    <i class="fa fa-camera-retro"></i> @Html.DisplayFor(modelItem => item.Name)
+
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.UtensilID">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.UtensilID">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.UtensilID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

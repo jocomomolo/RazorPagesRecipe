@@ -10,6 +10,17 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+
+<ejs-grid id="GridRecipes">
+    <e-data-manager url="/Recipes/Index?handler=LoadRecipes" adaptor="UrlAdaptor"></e-data-manager>
+    <e-grid-columns>
+        <e-grid-column field="RecipeID" headerText="Recipe ID" textAlign="Right" width="120" visible="false"></e-grid-column>
+        <e-grid-column field="Title" headerText="Title" width="150"></e-grid-column>
+    </e-grid-columns>
+</ejs-grid>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -39,35 +50,36 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Recipe) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category.Name)
-            </td>
-            <td>
-                <a asp-page="./Details" asp-route-id="@item.RecipeID">@Html.DisplayFor(modelItem => item.Title)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Owner)
-            </td>
+        @foreach (var item in Model.Recipe)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.Name)
+                </td>
+                <td>
+                    <a asp-page="./Details" asp-route-id="@item.RecipeID">@Html.DisplayFor(modelItem => item.Title)</a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Owner)
+                </td>
 
-            <td>
-                @(item.Vegetarian ? "Yes" : "No")
-            </td>
-            <td>
-                @(item.Freezable ? "Yes" : "No")
-            </td>
-            <td>
-                <a href=@Html.DisplayFor(modelItem => item.Source)>@Html.DisplayFor(modelItem => item.Source)</a>
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.RecipeID">Edit</a> |
-                <a asp-page="./Delete" asp-route-id="@item.RecipeID">Delete</a>
-            </td>
-        </tr>
-}
+                <td>
+                    @(item.Vegetarian ? "Yes" : "No")
+                </td>
+                <td>
+                    @(item.Freezable ? "Yes" : "No")
+                </td>
+                <td>
+                    <a href=@Html.DisplayFor(modelItem => item.Source)>@Html.DisplayFor(modelItem => item.Source)</a>
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.RecipeID">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.RecipeID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
