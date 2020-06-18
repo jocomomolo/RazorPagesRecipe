@@ -4,7 +4,7 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+@Html.AntiForgeryToken()
 <h1>Index</h1>
 
 <p>
@@ -12,16 +12,18 @@
 </p>
 
 
-<ejs-grid id="GridRecipes">
-    <e-data-manager url="/Recipes/Index?handler=LoadRecipes" adaptor="UrlAdaptor"></e-data-manager>
+<ejs-grid id="GridRecipes" load="onLoad">
+
+    <e-data-manager url="/Recipes/Index?handler=DataSource" adaptor="UrlAdaptor"></e-data-manager>
     <e-grid-columns>
-        <e-grid-column field="RecipeID" headerText="Recipe ID" textAlign="Right" width="120" visible="false"></e-grid-column>
-        <e-grid-column field="Title" headerText="Title" width="150"></e-grid-column>
+        <e-grid-column field="ID" headerText="Recipe ID" textAlign="Right" width="120" visible="true"></e-grid-column>
+        <e-grid-column field="Title" headerText="Title" width="150" visible="true"></e-grid-column>
+        <e-grid-column field="Description" headerText="Description" width="150" visible="true"></e-grid-column>
     </e-grid-columns>
 </ejs-grid>
 
 
-<table class="table">
+@*<table class="table">
     <thead>
         <tr>
             <th>
@@ -82,4 +84,11 @@
             </tr>
         }
     </tbody>
-</table>
+</table>*@
+
+<script>
+    function onLoad()
+    {
+        this.dataSource.dataSource.headers = [{ 'XSRF-TOKEN': $("input:hidden[name='__RequestVerificationToken']").val() }];
+    }
+</script>

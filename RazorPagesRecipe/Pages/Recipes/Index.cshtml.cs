@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,9 +9,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using RazorPagesRecipe.Data;
 using RazorPagesRecipe.Models;
+using Syncfusion.EJ2.Base;
 
 namespace RazorPagesRecipe.Pages.Recipes
 {
+    [ValidateAntiForgeryToken]
     public class IndexModel : PageModel
     {
         private readonly RazorPagesRecipe.Data.RazorPagesRecipeContext _context;
@@ -20,15 +23,53 @@ namespace RazorPagesRecipe.Pages.Recipes
             _context = context;
         }
 
-        public IList<Recipe> Recipe { get;set; }
-        public Recipe Recetas { get; set; }
-        public async Task OnGetAsync()
+        //public IList<Recipe> Recipe { get;set; }
+        //public String[] prueba { get; set; } = { "nada", "tampoco" };
+        //public async Task OnGetAsync()
+        //{
+        //    Recipe = await _context.Recipe.OrderBy(r => r.Category)
+        //        .Include(recipe => recipe.Category)
+        //        .ToListAsync();
+        //}
+
+        public JsonResult OnPostDataSource([FromBody] DataManagerRequest dm)
         {
-            Recipe = await _context.Recipe.OrderBy(r => r.Category)
-                .Include(recipe => recipe.Category)
-                .ToListAsync();
-            Recetas = _context.Recipe.FirstOrDefault();
+
+            var query = _context.Recipe
+                .Select(r => new
+                {
+                    ID = r.RecipeID,
+                    Title = r.Title,
+                    Description = r.Description
+                });
+
+            var DataSource = query;
+
+            DataOperations operation = new DataOperations();
+            if (dm.Search != null && dm.Search.Count > 0)
+            {
+                DataSource = operation.PerformSearching(DataSource, dm.Search);  //Search
+            }
+            if (dm.Sorted != null && dm.Sorted.Count > 0) //Sorting
+            {
+                DataSource = operation.PerformSorting(DataSource, dm.Sorted);
+            }
+            if (dm.Where != null && dm.Where.Count > 0) //Filtering
+            {
+                DataSource = operation.PerformFiltering(DataSource, dm.Where, dm.Where[0].Operator);
+            }
+            int count = DataSource.Count();
+            if (dm.Skip != 0)
+            {
+                DataSource = operation.PerformSkip(DataSource, dm.Skip);   //Paging
+            }
+            if (dm.Take != 0)
+            {
+                DataSource = operation.PerformTake(DataSource, dm.Take);
+            }
+            return dm.RequiresCounts ? new JsonResult(new { result = DataSource, count = count }) : new JsonResult(DataSource);
         }
+
 
     }
 }
