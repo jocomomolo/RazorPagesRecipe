@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesRecipe.Data;
+using Newtonsoft.Json;
 
 namespace RazorPagesRecipe
 {
@@ -26,12 +27,16 @@ namespace RazorPagesRecipe
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-
+            
             //Set custom default page
             services.AddMvc().AddRazorPagesOptions(options =>
             {
                 options.Conventions.AddPageRoute("/Recipes/Index", "");
             });
+            services.AddMvc();
+            // keeps the casing to that of the model when serializing to json (default is converting to camelCase)
+            services.AddMvc()
+                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
 
             //services.AddDbContext<RazorPagesRecipeContext>(options =>
             //        options.UseNpgsql(Configuration.GetConnectionString("RazorPagesRecipeContext")));

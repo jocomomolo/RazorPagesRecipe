@@ -50,7 +50,7 @@ namespace RazorPagesRecipe.Pages.Recipes
             }
 
             RecipeUtensil = new RecipeUtensil();
-
+            Recipe.CreationDate = DateTime.Today;
             Recipe.TotalTime = Recipe.PreparationTime + Recipe.CookingTime;
             //Pass Selected Category on View to Controller before Adding Recipe
             Recipe.Category = _context.Category.FirstOrDefault(c => c.CategoryID == SelectedCategoryID);

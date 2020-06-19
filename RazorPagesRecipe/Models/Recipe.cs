@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RazorPagesRecipe.Models.MasterClass;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RazorPagesRecipe.Models
 {
-    public class Recipe
+    public class Recipe : Master
     {
         public int RecipeID { get; set; }
         [Required]

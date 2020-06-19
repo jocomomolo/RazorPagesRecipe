@@ -35,12 +35,21 @@ namespace RazorPagesRecipe.Pages.Recipes
         public JsonResult OnPostDataSource([FromBody] DataManagerRequest dm)
         {
 
-            var query = _context.Recipe
-                .Select(r => new
+            var query = _context.Recipe.OrderBy(r => r.Category)
+            .Include(recipe => recipe.Category)
+            .Select(x => new
                 {
-                    ID = r.RecipeID,
-                    Title = r.Title,
-                    Description = r.Description
+                    ID = x.RecipeID,
+                    Category = x.Category.Name,
+                    Title = x.Title,
+                    TotalTime = x.TotalTime,
+                    Owner = x.Owner,
+                    Vegetarian = x.Vegetarian,
+                    Freezable = x.Freezable,
+                    Source = x.Source,
+                    Description = x.Description, 
+                    
+
                 });
 
             var DataSource = query;

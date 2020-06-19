@@ -10,6 +10,8 @@
     <Compile Remove="Migrations\20200531072902_whatever.Designer.cs" />
     <Compile Remove="Migrations\20200604155220_IsFreezableToUnNullable.cs" />
     <Compile Remove="Migrations\20200604155220_IsFreezableToUnNullable.Designer.cs" />
+    <Compile Remove="Migrations\20200619202441_AddedMasterClassDate.cs" />
+    <Compile Remove="Migrations\20200619202441_AddedMasterClassDate.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
