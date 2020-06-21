@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using RazorPagesRecipe.Data;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace RazorPagesRecipe
 {
@@ -35,9 +36,11 @@ namespace RazorPagesRecipe
             });
             services.AddMvc();
             // keeps the casing to that of the model when serializing to json (default is converting to camelCase)
-            services.AddMvc()
-                .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
-
+            //services.AddMvc()
+            //    .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
+            services.AddControllersWithViews();
+            services.AddRazorPages();
+            services.AddMvc().AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
             //services.AddDbContext<RazorPagesRecipeContext>(options =>
             //        options.UseNpgsql(Configuration.GetConnectionString("RazorPagesRecipeContext")));
             services.AddDbContext<RazorPagesRecipeContext>(o => o.UseNpgsql(Configuration.GetConnectionString("RazorPagesRecipeContext"),
