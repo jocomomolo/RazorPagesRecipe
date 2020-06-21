@@ -18,21 +18,21 @@
     <e-data-manager url="/Recipes/Index?handler=DataSource" adaptor="UrlAdaptor"></e-data-manager>
     <e-grid-columns>
         <e-grid-column field="ID" headerText="Recipe ID" textAlign="Right" width="60" visible="false"></e-grid-column>
-        <e-grid-column field="Category" headerText="Category" width="50"></e-grid-column>
-        <e-grid-column field="Title" headerText="Title" width="100"></e-grid-column>
-        <e-grid-column field="TotalTime" headerText="Time" width="40"></e-grid-column>
-        <e-grid-column field="Owner" headerText="Owner" width="50"></e-grid-column>
-        <e-grid-column field="Vegetarian" headerTemplate="#vegTemplate" displayAsCheckBox="true" width="30"></e-grid-column>
-        <e-grid-column field="Freezable" headerTemplate="#freezeTemplate" displayAsCheckBox="true" width="30"></e-grid-column>
-        <e-grid-column field="Source" headerText="Source" width="60"></e-grid-column>
+        <e-grid-column field="Category" headerText="Category" width="70"></e-grid-column>
+        <e-grid-column field="Title" headerText="Title" width="70"></e-grid-column>
+        <e-grid-column field="TotalTime" headerText="Time" width="70"></e-grid-column>
+        <e-grid-column field="Owner" headerText="Owner" width="70"></e-grid-column>
+        <e-grid-column field="Vegetarian" headerTemplate="#vegTemplate" displayAsCheckBox="true" width="50"></e-grid-column>
+        <e-grid-column field="Freezable" headerTemplate="#freezeTemplate" displayAsCheckBox="true" width="40"></e-grid-column>
+        @*<e-grid-column field="Source" headerText="Source" width="60"></e-grid-column>*@
     </e-grid-columns>
 </ejs-grid>
 
 <script type="text/x-jsrender" id="vegTemplate">
-    <i class="fa fa-leaf" style="font-size:20px;"></i>
+    <i class="fa fa-leaf" @*style="font-size:20px;"*@></i>
 </script>
 <script type="text/x-jsrender" id="freezeTemplate">
-    <i class="fa fa-snowflake-o" style="font-size:20px;"></i>
+    <i class="fa fa-snowflake-o" @*style="font-size:20px;"*@></i>
 </script>
 <script>
     function onLoad() {
