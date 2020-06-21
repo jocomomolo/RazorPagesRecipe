@@ -12,120 +12,31 @@
 </p>
 
 
-<ejs-grid id="GridRecipes" load="onLoad" showColumnChooser="true" allowFiltering="true" allowMultiSorting="true" allowSorting="true" toolbar="@( new List<string>() { "ColumnChooser"})" allowReordering="true" allowGrouping="true">
+<ejs-grid id="GridRecipes" load="onLoad" showColumnChooser="true" allowTextWrap="true" allowFiltering="true" allowMultiSorting="true" allowSorting="true" toolbar="@( new List<string>() { "ColumnChooser"})" allowReordering="true" allowGrouping="true">
     <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
     <e-grid-pagesettings pageSize="50"></e-grid-pagesettings>
     <e-data-manager url="/Recipes/Index?handler=DataSource" adaptor="UrlAdaptor"></e-data-manager>
     <e-grid-columns>
-        <e-grid-column field="ID" headerText="Recipe ID" textAlign="Right" width="120" visible="false"></e-grid-column>
-        <e-grid-column field="Category" headerText="Category" width="150"></e-grid-column>
-        <e-grid-column field="Title" headerText="Title" width="150"></e-grid-column>
-        <e-grid-column field="TotalTime" headerText="Time" width="150"></e-grid-column>
-        <e-grid-column field="Owner" headerText="Owner" width="150"></e-grid-column>
-        <e-grid-column field="Vegetarian" headerText="Vegetarian" displayAsCheckBox="true" width="150"></e-grid-column>
-        <e-grid-column field="Freezable" headerText="Freezable" displayAsCheckBox="true" width="150"></e-grid-column>
-        <e-grid-column field="Source" headerText="Source" width="150"></e-grid-column>
+        <e-grid-column field="ID" headerText="Recipe ID" textAlign="Right" width="60" visible="false"></e-grid-column>
+        <e-grid-column field="Category" headerText="Category" width="50"></e-grid-column>
+        <e-grid-column field="Title" headerText="Title" width="100"></e-grid-column>
+        <e-grid-column field="TotalTime" headerText="Time" width="40"></e-grid-column>
+        <e-grid-column field="Owner" headerText="Owner" width="50"></e-grid-column>
+        <e-grid-column field="Vegetarian" headerTemplate="#vegTemplate" displayAsCheckBox="true" width="30"></e-grid-column>
+        <e-grid-column field="Freezable" headerTemplate="#freezeTemplate" displayAsCheckBox="true" width="30"></e-grid-column>
+        <e-grid-column field="Source" headerText="Source" width="60"></e-grid-column>
     </e-grid-columns>
 </ejs-grid>
 
-@*<table class="table">
-        <thead>
-            <tr>
-                <th>
-                    Category
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Recipe[0].Title)
-                </th>
-                <th>
-                    Total Time
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Recipe[0].Owner)
-                </th>
-
-                <th>
-                    @Html.DisplayNameFor(model => model.Recipe[0].Vegetarian)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Recipe[0].Freezable)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Recipe[0].Source)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model.Recipe)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Category.Name)
-                    </td>
-                    <td>
-                        <a asp-page="./Details" asp-route-id="@item.RecipeID">@Html.DisplayFor(modelItem => item.Title)</a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TotalTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Owner)
-                    </td>
-
-                    <td>
-                        @(item.Vegetarian ? "Yes" : "No")
-                    </td>
-                    <td>
-                        @(item.Freezable ? "Yes" : "No")
-                    </td>
-                    <td>
-                        <a href=@Html.DisplayFor(modelItem => item.Source)>@Html.DisplayFor(modelItem => item.Source)</a>
-                    </td>
-                    <td>
-                        <a asp-page="./Edit" asp-route-id="@item.RecipeID">Edit</a> |
-                        <a asp-page="./Delete" asp-route-id="@item.RecipeID">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>*@
-
+<script type="text/x-jsrender" id="vegTemplate">
+    <i class="fa fa-leaf" style="font-size:20px;"></i>
+</script>
+<script type="text/x-jsrender" id="freezeTemplate">
+    <i class="fa fa-snowflake-o" style="font-size:20px;"></i>
+</script>
 <script>
     function onLoad() {
         this.dataSource.dataSource.headers = [{ 'XSRF-TOKEN': $("input:hidden[name='__RequestVerificationToken']").val() }];
     }
-    //function actionComplete(args) {
-    //    if (args.requestType === 'sorting') {
-    //        for (var columns = 0; columns < this.getColumns().length; columns++) {
-    //            for (var sortcolumns = 0; sortcolumns < this.sortSettings.columns.length; sortcolumns++) {
-    //                if (this.sortSettings.columns[sortcolumns].field === this.getColumns()[columns].field) {
-    //                    (document.getElementById(this.sortSettings.columns[sortcolumns].field)).ej2_instances[0].checked = true;
-    //                    break;
-    //                } else {
-    //                    (document.getElementById(this.getColumns()[columns].field)).ej2_instances[0].checked = false;
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
-
-    //function CategoryChanged(args) {
-    //    var grid = document.getElementById("Grid").ej2_instances[0];
-    //    if (this.checked) {
-    //        grid.sortColumn('Category', 'Ascending', true);
-    //    } else {
-    //        grid.removeSortColumn('Category');
-    //    }
-
-    //}
-    //function TitleChanged(args) {
-    //    var grid = document.getElementById("Grid").ej2_instances[0];
-    //    if (this.checked) {
-    //        grid.sortColumn('Title', 'Ascending', true);
-    //    } else {
-    //        grid.removeSortColumn('Title');
-    //    }
-    //}
-    
 </script>
+
