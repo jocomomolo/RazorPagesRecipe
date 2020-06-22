@@ -20,11 +20,12 @@
     <e-grid-columns>
         <e-grid-column field="ID" headerText="Recipe ID" textAlign="Right" width="60" visible="false"></e-grid-column>
         <e-grid-column field="Category" headerText="Category" width="70"></e-grid-column>
-        <e-grid-column field="Title" headerText="Title" width="70"></e-grid-column>
+        <e-grid-column field="Title" template="#temp" width="70"></e-grid-column>
         <e-grid-column field="TotalTime" headerTemplate="#timeTemplate" width="70"></e-grid-column>
         <e-grid-column field="Owner" headerTemplate="#ownerTemplate" width="70"></e-grid-column>
         <e-grid-column field="Vegetarian" headerTemplate="#vegTemplate" displayAsCheckBox="true" width="50"></e-grid-column>
-        <e-grid-column field="Freezable" headerTemplate="#freezeTemplate" displayAsCheckBox="true" width="40"></e-grid-column>
+        <e-grid-column field="Freezable" headerTemplate="#freezeTemplate" displayAsCheckBox="true" width="50"></e-grid-column>
+        <e-grid-column field="Ingredients" headerText="Ingredients" width="70"></e-grid-column>
         @*<e-grid-column field="Source" headerText="Source" width="60"></e-grid-column>*@
     </e-grid-columns>
 </ejs-grid>
@@ -40,6 +41,9 @@
 </script>
 <script type="text/x-jsrender" id="freezeTemplate">
     <i class="fa fa-snowflake-o"></i>
+</script>
+<script type="text/x-jsrender" id="temp">   
+    <a id="ID" rel='nofollow' href="Recipes/Edit?id=${ID}">${Title}</a>
 </script>
 <script>
     function onLoad() {

@@ -77,10 +77,10 @@ namespace RazorPagesRecipe.Pages.Recipes
         // more details, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
-            if (!ModelState.IsValid)
-            {
-                return Page();
-            }
+            //if (!ModelState.IsValid)
+            //{
+            //    return Page();
+            //}
 
             Recipe.TotalTime = Recipe.PreparationTime + Recipe.CookingTime;
             //Pass Selected Category on View to Controller before Adding 

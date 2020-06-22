@@ -48,7 +48,7 @@ namespace RazorPagesRecipe.Pages.Recipes
                     Vegetarian = x.Vegetarian,
                     Freezable = x.Freezable,
                     Source = x.Source,
-                    Description = x.Description, 
+                    Ingredients = x.Ingredients, 
                 });
 
             var DataSource = query;
