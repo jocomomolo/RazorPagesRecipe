@@ -12,10 +12,10 @@
 </p>
 
 
-<ejs-grid id="GridRecipes" load="onLoad" showColumnChooser="true" allowTextWrap="true" allowFiltering="true" allowMultiSorting="true" allowSorting="true" toolbar="@( new List<string>() { "ColumnChooser"})" allowReordering="true" allowGrouping="true">
+<ejs-grid id="GridRecipes" load="onLoad" showColumnChooser="true" allowTextWrap="false" allowFiltering="true" allowMultiSorting="true" allowSorting="true" toolbar="@( new List<string>() { "ColumnChooser"})" allowReordering="true" allowGrouping="true">
     <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
     <e-grid-groupsettings columns="@(new string[] {"Category"})"></e-grid-groupsettings>
-    <e-grid-pagesettings pageSize="50"></e-grid-pagesettings>
+    @*<e-grid-pagesettings pageSize="50"></e-grid-pagesettings>*@
     <e-data-manager url="/Recipes/Index?handler=DataSource" adaptor="UrlAdaptor"></e-data-manager>
     <e-grid-columns>
         <e-grid-column field="ID" headerText="Recipe ID" textAlign="Right" width="60" visible="false"></e-grid-column>
