@@ -44,13 +44,11 @@ namespace RazorPagesRecipe.Pages.Recipes
                     Category = x.Category.Name,
                     Title = x.Title,
                     TotalTime = x.TotalTime,
-                    Owner = x.Owner,
+                    Owner = x.Owner.Name,
                     Vegetarian = x.Vegetarian,
                     Freezable = x.Freezable,
                     Source = x.Source,
                     Description = x.Description, 
-                    
-
                 });
 
             var DataSource = query;

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using RazorPagesRecipe.Data;
@@ -9,9 +10,10 @@ using RazorPagesRecipe.Data;
 namespace RazorPagesRecipe.Migrations
 {
     [DbContext(typeof(RazorPagesRecipeContext))]
-    partial class RazorPagesRecipeContextModelSnapshot : ModelSnapshot
+    [Migration("20200622135442_OwnerToNewClass")]
+    partial class OwnerToNewClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,25 +34,6 @@ namespace RazorPagesRecipe.Migrations
                     b.HasKey("CategoryID");
 
                     b.ToTable("Category");
-                });
-
-            modelBuilder.Entity("RazorPagesRecipe.Models.Owner", b =>
-                {
-                    b.Property<int>("OwnerID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn);
-
-                    b.Property<DateTime>("CreationDate")
-                        .HasColumnType("timestamp without time zone");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("OwnerID");
-
-                    b.ToTable("Owner");
                 });
 
             modelBuilder.Entity("RazorPagesRecipe.Models.Recipe", b =>
@@ -80,9 +63,6 @@ namespace RazorPagesRecipe.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int?>("OwnerID")
-                        .HasColumnType("integer");
-
                     b.Property<int>("Portions")
                         .HasColumnType("integer");
 
@@ -105,8 +85,6 @@ namespace RazorPagesRecipe.Migrations
                     b.HasKey("RecipeID");
 
                     b.HasIndex("CategoryID");
-
-                    b.HasIndex("OwnerID");
 
                     b.ToTable("Recipe");
                 });
@@ -148,10 +126,6 @@ namespace RazorPagesRecipe.Migrations
                         .HasForeignKey("CategoryID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("RazorPagesRecipe.Models.Owner", "Owner")
-                        .WithMany("Recipes")
-                        .HasForeignKey("OwnerID");
                 });
 
             modelBuilder.Entity("RazorPagesRecipe.Models.RecipeUtensil", b =>

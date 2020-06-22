@@ -19,6 +19,9 @@ namespace RazorPagesRecipe.Pages.Recipes
         {
             _context = context;
         }
+        [BindProperty]
+        public int SelectedOwnerID { get; set; }
+        public List<SelectListItem> Owners { get; set; }
 
         [BindProperty]
         public int SelectedCategoryID { get; set; }
@@ -30,6 +33,7 @@ namespace RazorPagesRecipe.Pages.Recipes
 
         public async Task<IActionResult> OnGetAsync()
         {
+            Owners = await _context.Owner.OrderBy(a => a.OwnerID).Select(a => new SelectListItem { Value = a.OwnerID.ToString(), Text = a.Name }).ToListAsync();
             Categories = await _context.Category.OrderBy(a => a.CategoryID).Select(a => new SelectListItem {Value = a.CategoryID.ToString(), Text = a.Name }).ToListAsync();
             Utensils = await _context.Utensil.OrderBy(a => a.UtensilID).Select(a => new SelectListItem { Value = a.UtensilID.ToString(), Text = a.Name }).ToListAsync();
 
@@ -54,6 +58,7 @@ namespace RazorPagesRecipe.Pages.Recipes
             Recipe.TotalTime = Recipe.PreparationTime + Recipe.CookingTime;
             //Pass Selected Category on View to Controller before Adding Recipe
             Recipe.Category = _context.Category.FirstOrDefault(c => c.CategoryID == SelectedCategoryID);
+            Recipe.Owner = _context.Owner.FirstOrDefault(c => c.OwnerID == SelectedOwnerID);
 
             _context.Recipe.Add(Recipe);
             _context.SaveChanges();

@@ -113,12 +113,12 @@
     </dt>
     <dd class="col-md-6">
         <a href=@Html.DisplayFor(model => model.Recipe.Source)>@Html.DisplayFor(model => model.Recipe.Source)</a>
-        @*<dt class="col-md-2">
-                @Html.DisplayNameFor(model => model.Recipe.Owner)
+        <dt class="col-md-2">
+                Owner
             </dt>
             <dd class="col-md-2">
-                @Html.DisplayFor(model => model.Recipe.Owner)
-            </dd>*@
+                @Html.DisplayFor(model => model.Recipe.Owner.Name)
+            </dd>
 </dl>
     <div>
         <a asp-page="./Edit" asp-route-id="@Model.Recipe.RecipeID">Edit</a> |

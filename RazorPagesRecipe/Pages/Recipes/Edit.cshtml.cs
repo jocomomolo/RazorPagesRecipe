@@ -25,6 +25,12 @@ namespace RazorPagesRecipe.Pages.Recipes
         public Recipe Recipe { get; set; }
 
         [BindProperty]
+        public int? SelectedOwnerID { get; set; }
+
+        [BindProperty]
+        public string OwnerName { get; set; }
+        public List<SelectListItem> Owners { get; set; }
+        [BindProperty]
         public int? SelectedCategoryID { get; set; }
 
         [BindProperty]
@@ -44,7 +50,7 @@ namespace RazorPagesRecipe.Pages.Recipes
 
             Recipe = await _context.Recipe
                 .Include(recipe => recipe.Category)
-                //.Include(recipe => recipe.Ingredients)
+                .Include(recipe => recipe.Owner)
                 .Include(recipe => recipe.RecipeUtensils)
                     .ThenInclude(recipeUtensils => recipeUtensils.Utensil)
             .FirstOrDefaultAsync(m => m.RecipeID == id);
@@ -54,6 +60,9 @@ namespace RazorPagesRecipe.Pages.Recipes
                 return NotFound();
             }
 
+            SelectedOwnerID = Recipe.Owner.OwnerID;
+            OwnerName = Recipe.Owner.Name;
+            Owners = await _context.Owner.Select(a => new SelectListItem { Value = a.OwnerID.ToString(), Text = a.Name }).ToListAsync();
             SelectedCategoryID = Recipe.Category.CategoryID;
             CategoryName = Recipe.Category.Name;
             Categories = await _context.Category/*.Where(c => c.CategoryID != Recipe.Category.CategoryID)*/.Select(a => new SelectListItem { Value = a.CategoryID.ToString(), Text = a.Name }).ToListAsync();
@@ -74,7 +83,8 @@ namespace RazorPagesRecipe.Pages.Recipes
             }
 
             Recipe.TotalTime = Recipe.PreparationTime + Recipe.CookingTime;
-            //Pass Selected Category on View to Controller before Adding Recipe
+            //Pass Selected Category on View to Controller before Adding 
+            Recipe.Owner = _context.Owner.FirstOrDefault(c => c.OwnerID == SelectedOwnerID);
             Recipe.Category = _context.Category.FirstOrDefault(c => c.CategoryID == SelectedCategoryID);
             _context.Attach(Recipe).State = EntityState.Modified;
             

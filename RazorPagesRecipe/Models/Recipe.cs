@@ -17,16 +17,20 @@ namespace RazorPagesRecipe.Models
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         public string Source { get; set; }
-        [Required]
-        public string Owner { get; set; }
+        
         [Required]
         public Boolean Freezable { get; set; }
         //Times in minutes
         public int? TotalTime { get; set; }
         public int? PreparationTime { get; set; }
         public int? CookingTime { get; set; }
+
         //One recipe has one category: Snack/Main/Dessert
+        [Required]
         public Category Category { get; set; }
+
+        //One recipe has one Owner
+        public Owner Owner { get; set; }
         [Required]
         public string Ingredients { get; set; }
         public Boolean Vegetarian { get; set; }
