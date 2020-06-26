@@ -5,11 +5,11 @@
     ViewData["Title"] = "Filter by Ingredients";
 }
 @Html.AntiForgeryToken()
-<h1>Index</h1>
+@*<h1>Index</h1>*@
 
 
-<ejs-grid id="GridRecipes" load="onLoad" showColumnChooser="true" allowTextWrap="false" allowFiltering="true" allowMultiSorting="true" allowSorting="true" allowReordering="true" allowGrouping="true">
-    <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
+<ejs-grid id="GridRecipes" load="onLoad" allowTextWrap="false" allowFiltering="true" allowMultiSorting="true" allowSorting="true">
+    <e-grid-filterSettings type="FilterBar"></e-grid-filterSettings>
     @*<e-grid-groupsettings columns="@(new string[] {"Category"})"></e-grid-groupsettings>*@
     @*<e-grid-pagesettings pageSize="50"></e-grid-pagesettings>*@
     <e-data-manager url="/Recipes/Index?handler=DataSource" adaptor="UrlAdaptor"></e-data-manager>
