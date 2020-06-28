@@ -10,10 +10,7 @@ namespace RazorPagesRecipe.Models
     public class Owner : Master
     {
         public int OwnerID { get; set; }
-
-        [Required]
         public string Name { get; set; }
-
         public IList<Recipe> Recipes { get; set; }
     }
 }

@@ -12,6 +12,7 @@ namespace RazorPagesRecipe.Models
         public int RecipeID { get; set; }
         [Required]
         public string Title { get; set; }
+        //[Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public int Portions { get; set; }
         [Required]
         [DataType(DataType.MultilineText)]
@@ -22,13 +23,15 @@ namespace RazorPagesRecipe.Models
         public Boolean Freezable { get; set; }
         //Times in minutes
         public int? TotalTime { get; set; }
+        //[Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public int? PreparationTime { get; set; }
+        //[Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public int? CookingTime { get; set; }
 
         //One recipe has one category: Snack/Main/Dessert
         [Required]
         public Category Category { get; set; }
-
+        [Required]
         //One recipe has one Owner
         public Owner Owner { get; set; }
         [Required]
