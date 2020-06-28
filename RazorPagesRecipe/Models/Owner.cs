@@ -11,6 +11,6 @@ namespace RazorPagesRecipe.Models
     {
         public int OwnerID { get; set; }
         public string Name { get; set; }
-        public IList<Recipe> Recipes { get; set; }
+        public ICollection<Recipe> Recipes { get; set; }
     }
 }

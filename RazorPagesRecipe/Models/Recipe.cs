@@ -29,9 +29,7 @@ namespace RazorPagesRecipe.Models
         public int? CookingTime { get; set; }
 
         //One recipe has one category: Snack/Main/Dessert
-        [Required]
         public Category Category { get; set; }
-        [Required]
         //One recipe has one Owner
         public Owner Owner { get; set; }
         [Required]
