@@ -40,7 +40,9 @@ namespace RazorPagesRecipe
             //    .AddJsonOptions(options => options.JsonSerializerOptions.PropertyNamingPolicy = null);
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.AddMvc().AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = new DefaultContractResolver());
+            //ContractResolver: either null or:
+            //new DefaultContractResolver());
+            services.AddMvc().AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver = null);
             //services.AddDbContext<RazorPagesRecipeContext>(options =>
             //        options.UseNpgsql(Configuration.GetConnectionString("RazorPagesRecipeContext")));
             services.AddDbContext<RazorPagesRecipeContext>(o => o.UseNpgsql(Configuration.GetConnectionString("RazorPagesRecipeContext"),

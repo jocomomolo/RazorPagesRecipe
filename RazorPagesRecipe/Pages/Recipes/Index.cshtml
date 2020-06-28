@@ -5,15 +5,16 @@
     ViewData["Title"] = "Index";
 }
 @Html.AntiForgeryToken()
-<h1>Index</h1>
+@*<h1>Index</h1>*@
 
 <p>
     <a asp-page="Create">Create New</a>
 </p>
 
 
-<ejs-grid id="GridRecipes" load="onLoad" allowTextWrap="false" allowFiltering="true" allowMultiSorting="true" allowSorting="true" allowGrouping="true">
-    <e-grid-filterSettings type="Excel"></e-grid-filterSettings>
+<ejs-grid id="GridRecipes" load="onLoad" allowTextWrap="false" toolbar="@(new List<string>() {"Search"})" allowMultiSorting="true" allowSorting="true" allowGrouping="true">
+    @*Search has some issues, needs searchSettings fields*@
+    <e-grid-searchSettings fields="@(new string[] { "Category", "Title", "Ingredients", "Owner", "TotalTime", "Freezable", "Source" })" ignoreCase="true"></e-grid-searchSettings>
     <e-grid-groupsettings columns="@(new string[] {"Category"})"></e-grid-groupsettings>
     @*<e-grid-pagesettings pageSize="50"></e-grid-pagesettings>*@
     <e-data-manager url="/Recipes/Index?handler=DataSource" adaptor="UrlAdaptor"></e-data-manager>
