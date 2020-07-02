@@ -40,7 +40,7 @@ namespace RazorPagesRecipe.Pages.Recipes
         [BindProperty]
         public int[] SelectedUtensilsID { get; set; }
         public List<SelectListItem> Utensils { get; set; }
-
+        public IList<Utensil> AllUtensils { get; set; }
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -67,8 +67,7 @@ namespace RazorPagesRecipe.Pages.Recipes
             CategoryName = Recipe.Category.Name;
             Categories = await _context.Category/*.Where(c => c.CategoryID != Recipe.Category.CategoryID)*/.Select(a => new SelectListItem { Value = a.CategoryID.ToString(), Text = a.Name }).ToListAsync();
             //Many Ingredients but whatever, lets input all in one entity and separate by line breaks like Description
-            Utensils = Recipe.RecipeUtensils.Select(a => new SelectListItem { Value = a.UtensilID.ToString(), Text = a.Utensil.Name }).ToList();
-
+            Utensils = await _context.Utensil.Select(a => new SelectListItem { Value = a.UtensilID.ToString(), Text = a.Name }).ToListAsync();
 
             return Page();
         }

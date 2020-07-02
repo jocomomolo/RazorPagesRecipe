@@ -11,7 +11,7 @@ using RazorPagesRecipe.Models;
 
 namespace RazorPagesRecipe.Pages.Recipes
 {
-    public class CreateModel : PageModel
+    public class CreateModel : UtensilNamePageModel
     {
         private readonly RazorPagesRecipe.Data.RazorPagesRecipeContext _context;
 
@@ -39,8 +39,8 @@ namespace RazorPagesRecipe.Pages.Recipes
         {
             Owners = await _context.Owner.OrderBy(a => a.OwnerID).Select(a => new SelectListItem { Value = a.OwnerID.ToString(), Text = a.Name }).ToListAsync();
             Categories = await _context.Category.OrderBy(a => a.CategoryID).Select(a => new SelectListItem {Value = a.CategoryID.ToString(), Text = a.Name }).ToListAsync();
-            Utensils = await _context.Utensil.OrderBy(a => a.UtensilID).Select(a => new SelectListItem { Value = a.UtensilID.ToString(), Text = a.Name }).ToListAsync();
-
+            //Utensils = await _context.Utensil.OrderBy(a => a.UtensilID).Select(a => new SelectListItem { Value = a.UtensilID.ToString(), Text = a.Name }).ToListAsync();
+            PopulateUtensilsDropDownList(_context);
             return Page();
         }
 
