@@ -40,7 +40,7 @@ namespace RazorPagesRecipe.Pages.Recipes
             Owners = await _context.Owner.OrderBy(a => a.OwnerID).Select(a => new SelectListItem { Value = a.OwnerID.ToString(), Text = a.Name }).ToListAsync();
             Categories = await _context.Category.OrderBy(a => a.CategoryID).Select(a => new SelectListItem {Value = a.CategoryID.ToString(), Text = a.Name }).ToListAsync();
             //Utensils = await _context.Utensil.OrderBy(a => a.UtensilID).Select(a => new SelectListItem { Value = a.UtensilID.ToString(), Text = a.Name }).ToListAsync();
-            PopulateUtensilsDropDownList(_context);
+            //PopulateUtensilsDropDownList(_context);
             return Page();
         }
 
@@ -53,8 +53,8 @@ namespace RazorPagesRecipe.Pages.Recipes
                 return Page();
             }
 
-            RecipeUtensil = new RecipeUtensil();
-            //Recipe.CreationDate = DateTime.Today;
+            //RecipeUtensil = new RecipeUtensil();
+            Recipe.CreationDate = DateTime.Today;
             Recipe.TotalTime = Recipe.PreparationTime + Recipe.CookingTime;
             //Pass Selected Category From View to Model before Adding Recipe
             Recipe.Category = _context.Category.FirstOrDefault(c => c.CategoryID == SelectedCategoryID);
@@ -63,13 +63,13 @@ namespace RazorPagesRecipe.Pages.Recipes
             _context.Recipe.Add(Recipe);
             _context.SaveChanges();
 
-            foreach (var item in SelectedUtensilsID)
-            {
-                RecipeUtensil.RecipeID = Recipe.RecipeID;
-                RecipeUtensil.UtensilID = item;
-                _context.RecipeUtensil.Add(RecipeUtensil);
-                _context.SaveChanges();
-            }
+            //foreach (var item in SelectedUtensilsID)
+            //{
+            //    RecipeUtensil.RecipeID = Recipe.RecipeID;
+            //    RecipeUtensil.UtensilID = item;
+            //    _context.RecipeUtensil.Add(RecipeUtensil);
+            //    _context.SaveChanges();
+            //}
             return RedirectToPage("./Index");
         }
     }

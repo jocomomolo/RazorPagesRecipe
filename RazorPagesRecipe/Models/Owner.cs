@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RazorPagesRecipe.Models
 {
-    public class Owner : Master
+    public class Owner
     {
         public int OwnerID { get; set; }
         public string Name { get; set; }

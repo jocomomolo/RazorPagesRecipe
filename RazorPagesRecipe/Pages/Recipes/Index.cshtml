@@ -11,7 +11,6 @@
     <a asp-page="Create">Create New</a>
 </p>
 
-
 <ejs-grid id="GridRecipes" load="onLoad" allowTextWrap="false" toolbar="@(new List<string>() {"Search"})" allowMultiSorting="true" allowSorting="true" allowGrouping="true">
     @*Search has some issues, needs searchSettings fields*@
     <e-grid-searchSettings fields="@(new string[] { "Category", "Title", "Ingredients", "Owner", "TotalTime", "Freezable", "Source" })" ignoreCase="true"></e-grid-searchSettings>
@@ -20,12 +19,12 @@
     <e-data-manager url="/Recipes/Index?handler=DataSource" adaptor="UrlAdaptor"></e-data-manager>
     <e-grid-columns>
         <e-grid-column field="ID" headerText="Recipe ID" textAlign="Right" width="60" visible="false"></e-grid-column>
-        <e-grid-column field="Category" headerText="Category" width="70"></e-grid-column>
-        <e-grid-column field="Name" template="#temp" width="300"></e-grid-column>
+        <e-grid-column field="Category" headerText="Category" width="90"></e-grid-column>
+        <e-grid-column field="Name" template="#temp" width="250" allowGrouping="false"></e-grid-column>
         <e-grid-column field="TotalTime" headerTemplate="#timeTemplate" width="50"></e-grid-column>
-        @*<e-grid-column field="Owner" headerTemplate="#ownerTemplate" width="70"></e-grid-column>*@
-        <e-grid-column field="Vegetarian" headerTemplate="#vegTemplate" displayAsCheckBox="true" width="50"></e-grid-column>
-        <e-grid-column field="Freezable" headerTemplate="#freezeTemplate" displayAsCheckBox="true" width="50"></e-grid-column>
+        <e-grid-column field="Vegetarian" headerTemplate="#vegTemplate" displayAsCheckBox="true" width="60"></e-grid-column>
+        <e-grid-column field="Freezable" headerTemplate="#freezeTemplate" displayAsCheckBox="true" width="60"></e-grid-column>
+        <e-grid-column field="Owner" headerTemplate="#ownerTemplate" width="70"></e-grid-column>
         @*<e-grid-column field="Ingredients" headerText="Ingredients" width="90"></e-grid-column>*@
         @*<e-grid-column field="Source" headerText="Source" width="60"></e-grid-column>*@
     </e-grid-columns>
