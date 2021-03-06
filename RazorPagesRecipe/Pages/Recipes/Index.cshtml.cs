@@ -45,7 +45,7 @@ namespace RazorPagesRecipe.Pages.Recipes
                     Category = x.Category.Name,
                     Title = x.Title,
                     TotalTime = x.TotalTime,
-                    Owner = x.Owner.Name,
+                    //Owner = x.Owner.Name,
                     Vegetarian = x.Vegetarian,
                     Freezable = x.Freezable,
                     Source = x.Source,
