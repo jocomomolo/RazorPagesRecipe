@@ -30,7 +30,7 @@ namespace RazorPagesRecipe.Pages.Recipes
             }
 
             Recipe = await _context.Recipe
-                .Include(recipe => recipe.Owner)
+                //.Include(recipe => recipe.Owner)
                 .Include(recipe => recipe.Category)
                 .Include(recipe => recipe.RecipeUtensils)
                     .ThenInclude(recipeUtensils => recipeUtensils.Utensil)
